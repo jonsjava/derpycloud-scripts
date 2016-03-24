@@ -1,4 +1,9 @@
 #!/bin/bash
+##########################
+## Takes $site as input. It will create the docker container, create a folder in /docker/ 
+## that has the ghost files for this site, and configures nginx. If nginx test passes, it 
+## will restart nginx to apply changes
+##########################
 ghost_file='https://ghost.org/zip/ghost-latest.zip'
 site=$1
 noisySleep(){  
