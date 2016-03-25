@@ -63,6 +63,11 @@ if [ ! -d /docker/$site ]; then
   ln -s /etc/nginx/sites-available/${site} /etc/nginx/sites-enabled/${site}
   if ( nginx -t -c /etc/nginx/nginx.conf ); then
     service nginx restart
+    echo "######################################
+    Site set up.  To verify, please go to
+      http://$site/
+    in your browser.
+    ######################################"
   else
     echo "Nginx config failure. Exiting"
     exit 1
