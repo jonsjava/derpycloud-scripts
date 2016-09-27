@@ -5,10 +5,7 @@ get_cookbook_version(){
       recipes=$(echo "[$cookbook_name@"$(cat ${i}/metadata.rb|grep "version"|awk '{print $2}'|sed -e "s/'//g")"]")
     fi
   done
-     echo $recipes
-#  if [[ -f 'metadata.rb' ]]; then
-#    echo "["$(cat metadata.rb|grep "version"|awk '{print $2}'|sed -e "s/'//g")"]"
-#  fi
+  echo $recipes
 }
 local ret_status="%(?:%{$fg_bold[green]%}➜ :%{$fg_bold[red]%}➜ )"
 PROMPT='${ret_status} %{$fg[cyan]%}%c%{$reset_color%}%{$fg_bold[green]%} $(get_cookbook_version) %{$reset_color%} $(git_prompt_info)'
