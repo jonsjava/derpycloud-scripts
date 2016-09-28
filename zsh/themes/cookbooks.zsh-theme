@@ -1,7 +1,7 @@
 get_cookbook_version(){
   for i in $(echo ". .. ../.. ../../.. ../../../.. ../../../../.. ../../../../../.. ../../../../../../.. ../../../../../../../.. ../../../../../../../../.."); do
     if [[ -f "${i}/metadata.rb" ]]; then
-      cookbook_name=$(cat ${i}/metadata.rb|grep name|awk '{print $2}'|sed -e "s/'//g")
+      cookbook_name=$(cat ${i}/metadata.rb|grep -v "dirname"|grep name|awk '{print $2}'|sed -e "s/'//g")
       recipes=$(echo "[$cookbook_name@"$(cat ${i}/metadata.rb|grep "version"|awk '{print $2}'|sed -e "s/'//g")"]")
     fi
   done
